@@ -1,0 +1,32 @@
+<%- include("header") -%>
+    <div class="box" id="heading">
+        <h1> It is <%= listTitle %> ! </h1>
+    </div>
+
+    <div class="box">
+        <ul>
+            <% for( let index=0; index < newListItem.length; index++ ) { %>
+
+                <div class="item" style="justify-content: space-evenly;">
+                    <input type="checkbox">
+                    <p>
+                        <%= newListItem[index].name %>
+                    </p>
+                    <form action="/remove" method="post"><button name="deleteButton"
+                            value=<%=newListItem[index].id %>><i
+                                class="fas fa-minus-circle"></i></button></form>
+
+                </div>
+
+                <% } %>
+                    <form class="item" action="/" method="post">
+                        <label for="newItem"></label>
+                        <input type="text" name="newItem" placeholder="new item">
+                        <button class="btn btn-lg btn-outline-warning rounded-pill" type="submit"
+                            name="listButton" value=<%=listTitle %>>
+                            +
+                        </button>
+                    </form>
+        </ul>
+    </div>
+    <%- include("footer") -%>
